@@ -1,0 +1,17 @@
+@font-face{
+    font-family: Goldplay Alt Bold;
+    src: url("fonts/goldplay-alt-bold.otf");
+}
+
+.nav-link {
+    
+    color: blue !important;
+    font-family: "Goldplay Alt Bold";
+    transition: color 0.9s ease-in-out, border-bottom 0.9s ease-in;
+
+}
+
+.nav-link:hover {
+    color: green !important; 
+    border-bottom: 3px solid green;
+}
