@@ -3,15 +3,87 @@
     src: url("fonts/goldplay-alt-bold.otf");
 }
 
-.nav-link {
-    
-    color: blue !important;
-    font-family: "Goldplay Alt Bold";
-    transition: color 0.9s ease-in-out, border-bottom 0.9s ease-in;
+body{
+    padding: 0;
+    margin: 0;
+}
 
+
+main {
+    width: 100%; 
+    height: auto; 
+    display: flex; 
+    justify-content: center;
+}
+
+.main-content {
+    display: flex; 
+    justify-content: center; 
+    width: 60%; 
+}
+
+
+
+.nav {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+    position: relative; 
+    z-index: 1;
+}
+
+.nav.fixed {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000; 
+    background-color: white; 
+}
+
+.navbar {
+    background-image: url(img/bg-nav-bar.png);
+    height: 150px;
+    object-fit: cover;
+}
+
+.nav-link {
+    color: rgba(16, 69, 139, 1) !important;
+    font-family: "Goldplay Alt Bold";
+    border-bottom: 3px solid rgb(255, 255, 255);
+    transition: color 0.9s ease-in-out, border-bottom 0.9s ease-in;
 }
 
 .nav-link:hover {
-    color: green !important; 
+    color: green !important;
     border-bottom: 3px solid green;
 }
+
+
+.image-corte img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+       }
+
+.image-corte{
+    height: 42vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+.carousel-item{
+    height: 500px;
+}   
+
+.carousel{
+    width: 100%;
+} 
+
+.bg-caption{
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.276) !important; 
+    width: 100%;
+}
+
+
