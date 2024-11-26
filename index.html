@@ -18,41 +18,52 @@
 
 <body>
     
-    <header>
-
-    <nav class="navbar bg-light">
+  <header>
+    <nav class="navbar">
         <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="./img/icon.png" alt="Projeto Fortificar" width="130" height="80">
-          </a>
+            <a class="navbar-brand" href="#">
+                <img src="./img/icon.png" alt="Projeto Fortificar" width="130" height="80">
+            </a>
+            <div class="flex-shrink-1">
+<a href="" class="btn btn-dark">asddas</a>
+<a href="" class="btn btn-dark">asdasd</a>            
+            </div>
         </div>
-      </nav> 
+    </nav> 
 
-      <ul class="nav justify-content-center">
+    <ul class="nav justify-content-evenly p-1 px-5">
+      <li class="nav-item"> <!-- gambiarra -->
+      </li>
+      <li class="nav-item"> <!-- gambiarra -->
+      </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sobre</a>
+            <a class="nav-link" href="#">Sobre</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contato</a>
+            <a class="nav-link" href="#">Contato</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Trabalhe Conosco</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Colaboradores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Programa Fortificar</a>
+            <a class="nav-link" href="#">Notícias</a>
         </li>
-      </ul>   
-
-    </header>
+        <li class="nav-item">
+            <a class="nav-link disabled">Instituições</a>
+        </li>
+        <li class="nav-item"> <!-- gambiarra -->
+        </li>
+        <li class="nav-item"> <!-- gambiarra -->
+        </li>
+    </ul>   
+</header>
 
     <main>
 
+      <div class="main-content"> 
         <!-- Começo Carousel -->
 
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
@@ -63,24 +74,36 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
+                <div class="image-corte">
+                <img src="img/image.png" class="d-block w-100" alt="...">
+              </div>
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Primeiro Slide</h5>
-                  <p>Some representative placeholder content for the first slide.</p>
+                  <div class="bg-caption">
+                  <h5>Projeto Saúde Habitacional</h5>
+                  <p>O Programa Fortificar realizou mais uma entrega, desta vez no Município de Vitória/ES.</p>
+                </div>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <div class="image-corte">
+                <img src="img/image.png" class="d-block w-100" alt="...">
+              </div>
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Some representative placeholder content for the second slide.</p>
+                  <div class="bg-caption">
+                  <h5>Projeto Saúde Habitacional</h5>
+                  <p>O Programa Fortificar realizou mais uma entrega, desta vez no Município de Vitória/ES.</p>
+                </div>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <div class="image-corte">
+                <img src="img/image.png" class="d-block w-100" alt="...">
+              </div>
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>Some representative placeholder content for the third slide.</p>
+                  <div class="bg-caption">
+                  <h5>Projeto Saúde Habitacional</h5>
+                  <p>O Programa Fortificar realizou mais uma entrega, desta vez no Município de Vitória/ES.</p>
+                </div>
                 </div>
               </div>
             </div>
@@ -96,9 +119,11 @@
 
         <!-- Fim Carousel -->
 
+      </div>
 
+      
     </main>
-
+    
 
 <footer>
 
@@ -110,7 +135,21 @@
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-
+    
+    <script>
+      document.addEventListener('scroll', () => {
+          const navbar = document.querySelector('.navbar'); 
+          const nav = document.querySelector('.nav');
+          const navbarBottom = navbar.getBoundingClientRect().bottom;
+  
+          if (window.scrollY > navbarBottom) {
+              nav.classList.add('fixed'); 
+          } else {
+              nav.classList.remove('fixed');
+          }
+      });
+  </script>
+  
 </body>
 
 </html>
