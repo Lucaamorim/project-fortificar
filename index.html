@@ -19,46 +19,51 @@
 <body>
     
   <header>
-    <nav class="navbar">
+    <nav class="navbar navbar-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="./img/icon.png" alt="Projeto Fortificar" width="130" height="80">
             </a>
-            <div class="flex-shrink-1">
-<a href="" class="btn btn-dark">asddas</a>
-<a href="" class="btn btn-dark">asdasd</a>            
+            <div class="flex-shrink-1 ">
+<a href="" class="btn btn-green">Cadastra-se</a>
+<a href="" class="btn btn-blue">Entrar</a>            
             </div>
         </div>
     </nav> 
 
-    <ul class="nav justify-content-evenly p-1 px-5">
-      <li class="nav-item"> <!-- gambiarra -->
-      </li>
-      <li class="nav-item"> <!-- gambiarra -->
-      </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Sobre</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Trabalhe Conosco</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Notícias</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Instituições</a>
-        </li>
-        <li class="nav-item"> <!-- gambiarra -->
-        </li>
-        <li class="nav-item"> <!-- gambiarra -->
-        </li>
-    </ul>   
+    <nav class="navbar navbar-expand-lg navbar-light bg-white nav-bot">
+      <div class="container-fluid">
+        <!-- Botão toggle para dispositivos menores -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Conteúdo do Navbar -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav w-100 justify-content-evenly" style="padding-left: 20% ; padding-right: 20%;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Trabalhe Conosco</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Notícias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Instituições</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    
 </header>
 
     <main>
@@ -130,14 +135,16 @@
 <div class="d-flex flex-column text-center justify-content-center align-items-center">
   <h2> Acompanhe Nossos Feitos!</h2>
   <h4>Grafico referente aos projetos entreges mensalmente, juntamente com os valores doados</h4>
-  <canvas id="graficoProjetos"></canvas>
+  <div class="chart-container">
+    <canvas id="graficoProjetos"></canvas>
+  </div>
 </div>
 
-<div class="d-flex flex-row justify-content-center text-align-center align-items-center w-75" style="margin-bottom: 200px;">
+<div id="denuncia" class="d-flex flex-row justify-content-center align-items-center w-75" style="margin-bottom: 200px;">
   <div>
     <img class="img-fluid" src="./img/denucie.png" alt="denuncia" width="700px">
   </div>
-  <div class=" text-center">
+  <div class="text-center">
     <h2 class="">Viu algo de Errado? Denucie!</h2>
     <p>Apoiamos iniciativas que promovem o bem-estar e a ajuda ao próximo. Qualquer violação a este princípio será tratada com a <strong>seriedade</strong> que merece.</p>
 <a href="" class="btn btn-danger w-100">
@@ -158,7 +165,7 @@
         
       </div>
   
-      <div class="col mb-3">
+      <div class="col mb-3 justify-content-center">
         
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -198,8 +205,8 @@
     
     <script>
       document.addEventListener('scroll', () => {
-          const navbar = document.querySelector('.navbar'); 
-          const nav = document.querySelector('.nav');
+          const navbar = document.querySelector('.navbar-top'); 
+          const nav = document.querySelector('.nav-bot');
           const navbarBottom = navbar.getBoundingClientRect().bottom;
   
           if (window.scrollY > navbarBottom) {
@@ -209,7 +216,7 @@
           }
       });
 
-      // Dados do gráfico
+       // Dados do gráfico
     const labels = [
       'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
@@ -220,7 +227,7 @@
       datasets: [
         {
           label: 'Quantidade de Projetos',
-          data: [12, 15, 8, 20, 25, 10, 18, 22, 19, 24, 28, 30], // Quantidade de projetos
+          data: [46, 80, 150, 165, 92, 67, 187, 152, 97, 79, 48, 197], // Quantidade de projetos
           backgroundColor: 'rgba(16, 69, 139, 0.7)',
           borderColor: 'rgba(16, 69, 139, 1)',
           borderWidth: 1
@@ -228,7 +235,7 @@
         {
           label: 'Dinheiro Entregue (em milhares)',
           data: [50, 60, 40, 80, 100, 55, 90, 110, 95, 120, 130, 150], // Dinheiro entregue
-          type: 'line', // Tipo de gráfico para esta linha
+          type: 'line', 
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 2,
           tension: 0.3,
@@ -242,7 +249,8 @@
       type: 'bar',
       data: data,
       options: {
-        responsive: true,
+        responsive: true, // Garantir que o gráfico seja responsivo
+        maintainAspectRatio: true,
         plugins: {
           legend: {
             position: 'top',
