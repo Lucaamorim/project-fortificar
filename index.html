@@ -23,12 +23,24 @@
         <a class="navbar-brand" href="#">
           <img src="./img/icon.png" alt="Projeto Fortificar" width="130" height="80">
         </a>
-        <div class="button-group">
+        
+        <div id="user-info">
+          <span id="user-name"></span>
+          <img id="user-avatar" src="" alt="Foto de Perfil" class="img-profile">
+          <div id="menu-icon" class="hidden">
+            <img src="./img/menu.png" alt="Menu" />
+          </div>
+          <button id="logout" class="btn btn-red">Sair</button>
+        </div>
+
+        <div class="button-group" id="nav-buttons">
           <a href="#" class="btn btn-green">Cadastra-se</a>
           <a id="openPopup" class="btn btn-blue">Entrar</a>
         </div>
       </div>
     </nav>
+    
+    
   
     <nav class="navbar nav-bot">
       <div class="container-fluid">
@@ -237,6 +249,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+
 
 </body>
 

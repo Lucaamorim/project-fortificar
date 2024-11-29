@@ -78,24 +78,118 @@ document.addEventListener('scroll', () => {
 // config
 // );
 
-// Script Login
+// Função de login
+window.onload = function() {
+  var userInfo = document.getElementById('user-info');
+  var navButtons = document.getElementById('nav-buttons');
+  var btnsair = document.getElementById('logout');
+  var imgprofile = document.getElementById('user-avatar');
+  var nome = document.getElementById('user-name');
+  
+  // Verifica se o usuário está logado no localStorage
+  if (localStorage.getItem('userLoggedIn') === 'true') {
+    // Se o usuário estiver logado, exibe as informações do usuário
+    userInfo.classList.remove('hidden');
+    navButtons.classList.add('hidden'); 
+    var userNameSpan = document.getElementById('user-name');
+    var userAvatar = document.getElementById('user-avatar');
+    var btnsair = document.getElementById('logout');
+    var imgprofile = document.getElementById('user-avatar');
+    var nome = document.getElementById('user-name');
 
-function  logar(){
+    btnsair.classList.remove('hidden');
+    imgprofile.classList.remove('hidden');
+    nome.classList.remove('hidden');
+    
+    // Defina o nome e a foto com base no usuário logado
+    userNameSpan.textContent = localStorage.getItem('userName');
+    userAvatar.src = localStorage.getItem('userAvatar');
+    
 
-var login = document.getElementById('username').value;
-var senha = document.getElementById('password').value;
+  } else {
+    // Se não estiver logado, esconde as informações
+    userInfo.classList.add('hidden');
+    navButtons.classList.remove('hidden'); 
+    btnsair.classList.add('hidden');
+    imgprofile.classList.add('hidden');
+    nome.classList.add('hidden');
+  }
+};
 
-if(senha == 'adm123' && login == 'administrador'){
-  alert('Sucess')
-  popup.classList.add('hidden');
-}else if(senha == 'dona123' && login == 'donatario01'){
-  alert('Sucess')
-  popup.classList.add('hidden');
-}else{
-  alert('Login ou Senha incorreto')
+// Função de login
+function logar() {
+  var login = document.getElementById('username').value;
+  var senha = document.getElementById('password').value;
+  var btnsair = document.getElementById('logout');
+
+  // Referências para os elementos da navbar
+  var navButtons = document.getElementById('nav-buttons');
+  var userInfo = document.getElementById('user-info');
+  var userNameSpan = document.getElementById('user-name');
+  var userAvatar = document.getElementById('user-avatar');
+  var popup = document.querySelector('.popup');
+  var imgprofile = document.getElementById('user-avatar');
+  var nome = document.getElementById('user-name');
+
+  if (senha === 'adm123' && login === 'administrador') {
+    alert('Login realizado com sucesso!');
+    userNameSpan.textContent = 'Administrador'; 
+    userAvatar.src = './img/admin-avatar.png'; 
+    
+    navButtons.classList.add('hidden'); 
+    userInfo.classList.remove('hidden'); 
+    popup.classList.add('hidden'); 
+    btnsair.classList.remove('hidden');
+    imgprofile.classList.remove('hidden');
+    nome.classList.remove('hidden');
+
+    // Salva as informações no localStorage
+    localStorage.setItem('userLoggedIn', 'true');
+    localStorage.setItem('userName', 'Administrador');
+    localStorage.setItem('userAvatar', './img/admin-avatar.png');
+
+  } else if (senha === 'dona123' && login === 'donatario01') {
+    alert('Login realizado com sucesso!');
+    userNameSpan.textContent = 'Donatário01'; // Atualiza o nome do usuário
+    userAvatar.src = './img/donatario-avatar.png'; // Foto de perfil do donatário
+    navButtons.classList.add('hidden');
+    userInfo.classList.remove('hidden-prof'); // Exibe a div com as informações do usuário
+    popup.classList.add('hidden');
+
+    // Salva as informações no localStorage
+    localStorage.setItem('userLoggedIn', 'true');
+    localStorage.setItem('userName', 'Donatário01');
+    localStorage.setItem('userAvatar', './img/donatario-avatar.png');
+  } else {
+    alert('Login ou senha incorretos!');
+  }
 }
 
-}
+// Função de logout
+document.getElementById('logout').addEventListener('click', function () {
+  var navButtons = document.getElementById('nav-buttons');
+  var userInfo = document.getElementById('user-info');
+  var userNameSpan = document.getElementById('user-name');
+  var userAvatar = document.getElementById('user-avatar');
+  var btnsair = document.getElementById('logout');
+  var imgprofile = document.getElementById('user-avatar');
+
+  // Limpa o localStorage ao fazer logout
+  localStorage.removeItem('userLoggedIn');
+  localStorage.removeItem('userName');
+  localStorage.removeItem('userAvatar');
+
+  // Resetando as informações
+  userNameSpan.textContent = ''; // Limpa o nome do usuário
+  userAvatar.src = './img/avatar.png'; 
+  userInfo.classList.add('hidden'); // Esconde a div de informações
+  btnsair.classList.add('hidden'); // Esconde a div de informações
+  navButtons.classList.remove('hidden'); // Mostra os botões de login e cadastro
+  imgprofile.classList.add('hidden');
+  alert('Logout realizado com sucesso!');
+});
+
+
 // Script popup login
 const openPopup = document.getElementById('openPopup');
 const closePopup = document.getElementById('closePopup');
