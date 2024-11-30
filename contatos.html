@@ -82,61 +82,71 @@
     </nav>
   </header>
 
-  <main>
-    <div class="content-news">
-<h1 style="color: var(--azul-agua); padding: 1%;">Noticias</h1>
-
-    <div class="news-gallery">
-        <!-- Card 1 -->
-        <div class="news-card">
-          <img src="img/edital.png" alt="Notícia 1" class="news-image">
-          <h3 class="news-title">Edital 0054/2024</h3>
-          <p class="news-description">Foi publicado o edital para a doação de recursos financeiros a instituições carentes.</p>
-          <a href="edital.html" class="news-link">Saiba mais</a>
+  <main class="contact">
+     <section class="contact-header">
+        <h1>FALE CONOSCO</h1>
+        <div class="contact-info">
+          <div class="info-item">
+            <img src="img/email-icon.png" alt="Ícone de E-mail">
+            <p><strong>E-mail</strong><br><a href="mailto:fortes@fortes.ind.br">fortes@fortes.ind.br</a></p>
+          </div>
+          <div class="info-item">
+            <img src="img/phone-icon.png" alt="Ícone de Telefone">
+            <p><strong>Telefone</strong><br><a href="tel:+552733258883">+55 (27) 3325-8883</a></p>
+          </div>
+          <div class="info-item">
+            <img src="img/linkedin-icon.png" alt="Ícone do LinkedIn">
+            <p><strong>LinkedIn</strong><br><a href="https://linkedin.com">Acesse aqui</a></p>
+          </div>
+          <div class="info-item">
+            <img src="img/address-icon.png" alt="Ícone de Endereço">
+            <p><strong>Endereço</strong><br>Av. Maruípe, 2.793<br>Bairro Santa Luíza, Vitória – ES<br>CEP: 29045-235</p>
+          </div>
         </div>
-        
-        <!-- Card 2 -->
-        <div class="news-card">
-          <img src="https://via.placeholder.com/150" alt="Notícia 2" class="news-image">
-          <h3 class="news-title">Avanços em IA</h3>
-          <p class="news-description">Tecnologia de inteligência artificial revoluciona diagnósticos médicos.</p>
-          <a href="#" class="news-link">Saiba mais</a>
-        </div>
-        
-        <!-- Card 3 -->
-        <div class="news-card">
-          <img src="https://via.placeholder.com/150" alt="Notícia 3" class="news-image">
-          <h3 class="news-title">Energias Renováveis</h3>
-          <p class="news-description">Novas turbinas eólicas alcançam recorde de eficiência.</p>
-          <a href="#" class="news-link">Saiba mais</a>
-        </div>
-      
-        <!-- Card 4 -->
-        <div class="news-card">
-          <img src="https://via.placeholder.com/150" alt="Notícia 4" class="news-image">
-          <h3 class="news-title">Tecnologia 5G</h3>
-          <p class="news-description">Cobertura 5G promete revolucionar a conectividade em áreas rurais.</p>
-          <a href="#" class="news-link">Saiba mais</a>
-        </div>
-      
-        <!-- Card 5 -->
-        <div class="news-card">
-          <img src="https://via.placeholder.com/150" alt="Notícia 5" class="news-image">
-          <h3 class="news-title">Saúde e Bem-Estar</h3>
-          <p class="news-description">Pesquisadores destacam os benefícios do sono na saúde mental.</p>
-          <a href="#" class="news-link">Saiba mais</a>
-        </div>
-      
-        <!-- Card 6 -->
-        <div class="news-card">
-          <img src="https://via.placeholder.com/150" alt="Notícia 6" class="news-image">
-          <h3 class="news-title">Sustentabilidade</h3>
-          <p class="news-description">Novos projetos urbanos incentivam o uso de transportes públicos ecológicos.</p>
-          <a href="#" class="news-link">Saiba mais</a>
-        </div>
-      </div>
-    </div>
-
+      </section>
+    
+      <section class="contact-form">
+        <p>Quer entrar em contato com a FORTES? Escolha a área que deseja, envie sua mensagem ou ligue para 27 3325-8883. Converse com a FORTES sempre que precisar.</p>
+        <p><strong>Obs.:</strong> Por favor, <strong>não utilize este espaço para enviar currículo</strong>. Para cadastro e visualização de oportunidades, clique em <a href="#">Trabalhe Conosco</a>.</p>
+    
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome completo:</label>
+              <input type="text" id="name" name="name" placeholder="Digite aqui o seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="email" id="email" name="email" placeholder="Digite aqui o seu e-mail" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Telefone:</label>
+              <input type="tel" id="phone" name="phone" placeholder="(99) 99999-9999" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Assunto:</label>
+              <input type="text" id="subject" name="subject" placeholder="Digite aqui o assunto" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="sector">Escolha o setor:</label>
+              <select id="sector" name="sector">
+                <option value="sugestoes">Sugestões/Informações/Reclamações/Elogios</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="message">Mensagem:</label>
+              <textarea id="message" name="message" placeholder="Digite sua mensagem aqui" rows="5" required></textarea>
+            </div>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
   </main>
 
 
@@ -197,11 +207,7 @@
     </div>
   </div>
 
-  
 
-  <!-- script bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 
 
