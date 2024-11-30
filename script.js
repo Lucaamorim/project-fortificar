@@ -79,35 +79,24 @@ document.addEventListener('scroll', () => {
 // );
 
 // Função de login
-window.onload = function() {
+window.onload = function () {
   var userInfo = document.getElementById('user-info');
   var navButtons = document.getElementById('nav-buttons');
-  var btnsair = document.getElementById('logout');
+  var userNameSpan = document.getElementById('user-name');
+  var userAvatar = document.getElementById('user-avatar');
   var imgprofile = document.getElementById('user-avatar');
   var nome = document.getElementById('user-name');
   
   // Verifica se o usuário está logado no localStorage
   if (localStorage.getItem('userLoggedIn') === 'true') {
-    // Se o usuário estiver logado, exibe as informações do usuário
-    userInfo.classList.remove('hidden');
-    navButtons.classList.add('hidden'); 
-    var userNameSpan = document.getElementById('user-name');
-    var userAvatar = document.getElementById('user-avatar');
-    var btnsair = document.getElementById('logout');
-    var imgprofile = document.getElementById('user-avatar');
-    var nome = document.getElementById('user-name');
-
-    btnsair.classList.remove('hidden');
     imgprofile.classList.remove('hidden');
     nome.classList.remove('hidden');
-    
-    // Defina o nome e a foto com base no usuário logado
+    userInfo.classList.remove('hidden');
+    navButtons.classList.add('hidden'); 
+
     userNameSpan.textContent = localStorage.getItem('userName');
     userAvatar.src = localStorage.getItem('userAvatar');
-    
-
   } else {
-    // Se não estiver logado, esconde as informações
     userInfo.classList.add('hidden');
     navButtons.classList.remove('hidden'); 
     btnsair.classList.add('hidden');
@@ -115,6 +104,7 @@ window.onload = function() {
     nome.classList.add('hidden');
   }
 };
+
 
 // Função de login
 function logar() {
@@ -135,11 +125,10 @@ function logar() {
     alert('Login realizado com sucesso!');
     userNameSpan.textContent = 'Administrador'; 
     userAvatar.src = './img/admin-avatar.png'; 
-    
+
     navButtons.classList.add('hidden'); 
     userInfo.classList.remove('hidden'); 
     popup.classList.add('hidden'); 
-    btnsair.classList.remove('hidden');
     imgprofile.classList.remove('hidden');
     nome.classList.remove('hidden');
 
@@ -147,31 +136,34 @@ function logar() {
     localStorage.setItem('userLoggedIn', 'true');
     localStorage.setItem('userName', 'Administrador');
     localStorage.setItem('userAvatar', './img/admin-avatar.png');
+    location.reload();
 
   } else if (senha === 'dona123' && login === 'donatario01') {
     alert('Login realizado com sucesso!');
-    userNameSpan.textContent = 'Donatário01'; // Atualiza o nome do usuário
-    userAvatar.src = './img/donatario-avatar.png'; // Foto de perfil do donatário
+    userNameSpan.textContent = 'Donatário01'; 
+    userAvatar.src = './img/donatario-avatar.png'; 
     navButtons.classList.add('hidden');
-    userInfo.classList.remove('hidden-prof'); // Exibe a div com as informações do usuário
+    userInfo.classList.remove('hidden');
     popup.classList.add('hidden');
-
+    imgprofile.classList.remove('hidden');
+    nome.classList.remove('hidden');
+    location.reload();
     // Salva as informações no localStorage
     localStorage.setItem('userLoggedIn', 'true');
     localStorage.setItem('userName', 'Donatário01');
     localStorage.setItem('userAvatar', './img/donatario-avatar.png');
+    location.reload();
   } else {
     alert('Login ou senha incorretos!');
   }
 }
 
 // Função de logout
-document.getElementById('logout').addEventListener('click', function () {
+function logout() {
   var navButtons = document.getElementById('nav-buttons');
   var userInfo = document.getElementById('user-info');
   var userNameSpan = document.getElementById('user-name');
   var userAvatar = document.getElementById('user-avatar');
-  var btnsair = document.getElementById('logout');
   var imgprofile = document.getElementById('user-avatar');
 
   // Limpa o localStorage ao fazer logout
@@ -183,11 +175,16 @@ document.getElementById('logout').addEventListener('click', function () {
   userNameSpan.textContent = ''; // Limpa o nome do usuário
   userAvatar.src = './img/avatar.png'; 
   userInfo.classList.add('hidden'); // Esconde a div de informações
-  btnsair.classList.add('hidden'); // Esconde a div de informações
   navButtons.classList.remove('hidden'); // Mostra os botões de login e cadastro
   imgprofile.classList.add('hidden');
   alert('Logout realizado com sucesso!');
-});
+
+  
+  document.getElementById('sidebar').classList.remove('show');
+  document.getElementById('sidebar').classList.add('hidden');
+  localStorage.clear();
+  location.reload(); 
+};
 
 
 // Script popup login
@@ -247,3 +244,99 @@ function prevSlide() {
 // Mostrar o primeiro slide ao carregar a página
 showSlide(currentIndex);
 // fim carrosel
+
+function sidebar() {
+  console.log('Avatar clicado'); // Depuração
+  var sidebar = document.getElementById('sidebar');
+  var sidebarAvatar = document.getElementById('sidebar-avatar');
+  var sidebarUsername = document.getElementById('sidebar-username');
+  var adminButtons = document.getElementById('admin-buttons');
+  var donatarioButtons = document.getElementById('donatario-buttons');
+
+  // Verifica se o sidebar existe
+  if (!sidebar) {
+    console.error('Elemento sidebar não encontrado!');
+    return;
+  }
+
+  // Atualiza os dados da sidebar
+  var avatar = localStorage.getItem('userAvatar') || './img/avatar.png';
+  var name = localStorage.getItem('userName') || 'Usuário';
+
+  sidebarAvatar.src = avatar;
+  sidebarUsername.textContent = name;
+
+  // Mostra botões conforme o perfil
+  if (name === 'Administrador') {
+    adminButtons.classList.remove('hidden');
+    donatarioButtons.classList.add('hidden');
+  } else {
+    adminButtons.classList.add('hidden');
+    donatarioButtons.classList.remove('hidden');
+  }
+
+  // Alterna a visibilidade da sidebar
+  sidebar.classList.toggle('show');
+}
+
+const steps = document.querySelectorAll(".step");
+const lines = document.querySelectorAll(".line");
+const formSteps = document.querySelectorAll(".form-step");
+const nextBtns = document.querySelectorAll(".next-btn");
+const prevBtns = document.querySelectorAll(".prev-btn");
+
+let currentStep = 0;
+
+function updateFormStep(step) {
+  // Atualizar a exibição das etapas do formulário
+  formSteps.forEach((formStep, index) => {
+    if (index === step) {
+      formStep.classList.add("active");
+    } else {
+      formStep.classList.remove("active");
+    }
+  });
+
+  // Atualizar a barra de progresso
+  steps.forEach((stepEl, index) => {
+    if (index <= step) {
+      stepEl.classList.add("active");
+    } else {
+      stepEl.classList.remove("active");
+    }
+  });
+
+  // Atualizar as linhas na barra de progresso
+  lines.forEach((line, index) => {
+    if (index < step) {
+      line.classList.add("active");
+    } else {
+      line.classList.remove("active");
+    }
+  });
+}
+
+// Botões de avançar
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (currentStep < formSteps.length - 1) {
+      currentStep++;
+      updateFormStep(currentStep);
+    }
+  });
+});
+
+// Botões de voltar
+prevBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      updateFormStep(currentStep);
+    }
+  });
+});
+
+
+
+
+
